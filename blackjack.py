@@ -8,7 +8,16 @@ class BlackJackGame:
 
 
 class Cards:
+    '''
+    2-10 are worth their face value
+    J , Q , K are worth 10 
+    Aces can be 1 or 11, depending on which benifits the player
+    '''
+
+
+
     def __init__ (self,name):
+        
         self.name = name
 
 '''manages the players hand'''
@@ -25,30 +34,21 @@ class Deck:
 
 def main():
     done: bool = False
-    name = input('What is your name:')
+    user_name = input('\nWhat is your name: ')
 
-    prompt = '\nWelcome to BlackJack, are you ready to play ?\n' \
+    prompt = f'\nWelcome {user_name} to BlackJack, are you ready to play ?\n' \
     '1. Yes, I want to play\n' \
     '2. No, Im done\n'\
-    'Please enter 1 or 2 (or hit enter to end)\n'
+    'Please enter 1 or 2 (or hit enter to end): '
 
     while not done:
         choice = input(prompt)
         match choice:
-            case '':
-                print('Goodbye, come again soon')
+            case '' | '2':
+                print('\nGoodbye, come again soon!\n')
                 done =True
             case '1':
                 blackjack()
-            case '2':
-                print('Goodbye, come again soon')
-                done = True
-
-            
-
-
-
-    
 
 
 if __name__ == '__main__':
