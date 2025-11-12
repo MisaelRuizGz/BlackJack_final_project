@@ -11,7 +11,7 @@ class Cards:
     '''
     2-10 are worth their face value
     J , Q , K are worth 10 
-    Aces can be 1 or 11, depending on which benifits the player
+    Aces can be 1 or 11, depending on which benefits the player, 
     '''
 
 
@@ -25,7 +25,7 @@ class Player:
     def __init__ (self,name):
         self.name = name
 
-'''needs a shuffled list of cards'''
+'''needs a shuffled list of cards, contains 52 cards '''
 class Deck:
     def __init__ (self,name):
         self.name = name
@@ -33,7 +33,7 @@ class Deck:
 
 
 def main():
-    done: bool = False
+    
     user_name = input('\nWhat is your name: ')
 
     prompt = f'\nWelcome {user_name} to BlackJack, are you ready to play ?\n' \
@@ -41,6 +41,7 @@ def main():
     '2. No, Im done\n'\
     'Please enter 1 or 2 (or hit enter to end): '
 
+    done:bool = False
     while not done:
         choice = input(prompt)
         match choice:
