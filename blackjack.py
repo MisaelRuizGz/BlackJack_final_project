@@ -2,6 +2,19 @@
 
 
 class BlackJackGame:
+
+    @staticmethod
+    def rules():
+        print('\nBlackJack Rules: \n' \
+        '1. Get as close to 21 as possible without going over\n' \
+        '2. J , Q , K cards are worth 10 points\n' \
+        '3. Aces can be worth 1 or 11 points\n' \
+        '4. Dealer must hit until their cards total 17 or higher\n' \
+        '5. If you go over 21, you bust and lose the game\n' \
+        '6. If you and the dealer have the same total, it is a push (tie)\n'
+        )
+
+
     def __init__(self,name):
         self.name = name
 
@@ -31,7 +44,7 @@ class Deck:
         self.name = name
     
 
-
+''' add betting functionality '''
 def main():
     
     user_name = input('\nWhat is your name: ')
@@ -49,7 +62,10 @@ def main():
                 print('\nGoodbye, come again soon!\n')
                 done =True
             case '1':
-                blackjack()
+                BlackJackGame.rules()
+                
+                done =True
+                
 
 
 if __name__ == '__main__':
