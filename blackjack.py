@@ -40,6 +40,18 @@ class Player:
 
 '''needs a shuffled list of cards, contains 52 cards '''
 class Deck:
+    ''' Cards and their suits, need to figure out how to 
+    combine and only have one of each'''
+    cards = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'] 
+    suits = ['♠︎' , '♥︎' , '♦︎' , '♣︎']
+
+    for card in cards:
+        mixed_deck = []
+
+
+
+
+
     def __init__ (self,name):
         self.name = name
     
@@ -63,7 +75,7 @@ def main():
                 done =True
             case '1':
                 BlackJackGame.rules()
-                
+
                 done =True
                 
 
