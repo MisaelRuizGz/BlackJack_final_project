@@ -26,9 +26,6 @@ class Cards:
     J , Q , K are worth 10 
     Aces can be 1 or 11, depending on which benefits the player, 
     '''
-
-
-
     def __init__ (self,name):
         
         self.name = name
@@ -42,21 +39,29 @@ class Player:
 class Deck:
     ''' Cards and their suits, need to figure out how to 
     combine and only have one of each'''
-    cards = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'] 
+
+    cards = ['2 ','3 ','4 ','5 ','6 ','7 ','8 ','9 ','10 ','J ','Q ','K ','A ']
     suits = ['♠︎' , '♥︎' , '♦︎' , '♣︎']
 
-    mixed_deck = {}
+    ''' creates a place for the mixed cards to go after sorting'''
+    mixed_deck = []
 
+    '''sorts the cards into '''
     for card in cards:
-        
+        for suit in suits:
+            temp_card_hold = (card + suit)
+            mixed_deck.append(temp_card_hold)
 
 
-
-
-
-    def __init__ (self,name):
-        self.name = name
+    ''' 
+    This is for testing to make sure i have all 52 cards 
     
+    for i in range(0, len(mixed_deck), 4):
+        print(*mixed_deck[i:i+4])
+
+    print(len(mixed_deck))
+
+    '''
 
 ''' add betting functionality '''
 def main():
