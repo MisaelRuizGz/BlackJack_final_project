@@ -14,10 +14,9 @@ class BlackJackGame:
         '6. If you and the dealer have the same total, it is a push (tie)\n'
         )
 
+    def game(user_name):
 
-    def __init__(self,name):
-        self.name = name
-
+        return
 
 
 class Cards:
@@ -66,11 +65,11 @@ class Deck:
 ''' add betting functionality '''
 def main():
     
-    user_name = input('\nWhat is your name: ')
+   
 
-    prompt = f'\nWelcome {user_name} to BlackJack, are you ready to play ?\n' \
+    prompt = f'''\nWelcome to Misael's online casino, would you like to play BlackJack ?\n''' \
     '1. Yes, I want to play\n' \
-    '2. No, Im done\n'\
+    '2. No\n'\
     'Please enter 1 or 2 (or hit enter to end): '
 
     done:bool = False
@@ -81,9 +80,13 @@ def main():
                 print('\nGoodbye, come again soon!\n')
                 done =True
             case '1':
+                user_name = input('\nOkay lets get started that, what is your name: ')
+                print(f"\nOkay {user_name} the rules of BlackJack are simple")
                 BlackJackGame.rules()
+                BlackJackGame.game(user_name)
 
                 done =True
+
                 
 
 
