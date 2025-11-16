@@ -83,9 +83,6 @@ class Betting():
 
 
 def main():
-    
-   
-
     prompt = f'''\nWelcome to Misael's online casino, would you like to play BlackJack ?\n''' \
     '1. Yes, I want to play\n' \
     '2. No\n'\
@@ -102,9 +99,6 @@ def main():
                 user_name = input('\nOkay lets get started that, what is your name: ')
                 print(f"\nOkay {user_name} the rules of BlackJack are simple")
                 BlackJackGame.rules()
-
-                
-
                 done =True
 
                 
