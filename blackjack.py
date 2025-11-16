@@ -60,7 +60,12 @@ class Deck:
     for card in cards:
         for suit in suits:
             temp_card_hold = (card + suit)
-            mixed_deck.append(temp_card_hold)
+            mixed_deck.append(temp_card_hold) 
+
+
+
+
+            
 
 
     ''' 
