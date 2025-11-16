@@ -5,47 +5,58 @@ class BlackJackGame:
 
     @staticmethod
     def rules():
-        print('\nBlackJack Rules: \n' \
-        '1. Get as close to 21 as possible without going over\n' \
-        '2. J , Q , K cards are worth 10 points\n' \
-        '3. Aces can be worth 1 or 11 points\n' \
-        '4. Dealer must hit until their cards total 17 or higher\n' \
-        '5. If you go over 21, you bust and lose the game\n' \
-        '6. If you and the dealer have the same total, it is a push (tie)\n'
-        )
+        print("""
+        Blackjack Rules
+            Goal: Get as close to 21 as possible without going over.
 
-    def game(user_name):
+            Card Values:
+                - Number cards = face value
+                - J , Q , K = 10 points
+                - Ace (A) = 1 or 11 points (whichever benefits the player)
+
+            Dealer Rules:
+                The dealer must hit until their hand totals 17 or higher.
+            Bust:
+                If your total goes over 21, you bust and automatically lose.
+            Push:
+                If you and the dealer have the same total, it is a push (tie).
+              Betting:
+                You may bet up to a maximum of 200 chips per round.
+        """)
+
+
+    def game(self, user_name):
 
         return
 
 
 class Cards:
-    '''
-    2-10 are worth their face value
-    J , Q , K are worth 10 
-    Aces can be 1 or 11, depending on which benefits the player, 
-    '''
+    # 2-10 are worth their face value 
+    # J , Q , K are worth 10 Aces can be 1 or 11, depending on which benefits the player
+
     def __init__ (self,name):
         
         self.name = name
-
-'''manages the players hand'''
 class Player:
+
+
+
+
+
     def __init__ (self,name):
         self.name = name
 
-'''needs a shuffled list of cards, contains 52 cards '''
-class Deck:
-    ''' Cards and their suits, need to figure out how to 
-    combine and only have one of each'''
 
+class Deck:
+
+    #  Cards and their suits, need to figure out how to combine and only have one of each'''
     cards = ['2 ','3 ','4 ','5 ','6 ','7 ','8 ','9 ','10 ','J ','Q ','K ','A ']
     suits = ['♠︎' , '♥︎' , '♦︎' , '♣︎']
 
-    ''' creates a place for the mixed cards to go after sorting'''
+    #  creates a place for the mixed cards to go after sorting
     mixed_deck = []
 
-    '''sorts the cards into '''
+    #  sorts the cards into 
     for card in cards:
         for suit in suits:
             temp_card_hold = (card + suit)
@@ -62,7 +73,15 @@ class Deck:
 
     '''
 
-''' add betting functionality '''
+class Betting():
+
+    def chips():
+        return 
+
+
+
+
+
 def main():
     
    
@@ -83,7 +102,8 @@ def main():
                 user_name = input('\nOkay lets get started that, what is your name: ')
                 print(f"\nOkay {user_name} the rules of BlackJack are simple")
                 BlackJackGame.rules()
-                BlackJackGame.game(user_name)
+
+                
 
                 done =True
 
