@@ -67,14 +67,10 @@ class Deck:
     for card in cards:
         for suit in suits:
             temp_card_hold = (card + suit)
-<<<<<<< HEAD
             mixed_deck.append(temp_card_hold)
+            
 
-=======
-            mixed_deck.append(temp_card_hold) 
->>>>>>> 5494d58868f1e5d8ecfb81741ba0b500d58a5c4e
-
-    ''' 
+    '''
     This is for testing to make sure i have all 52 cards 
     
     for i in range(0, len(mixed_deck), 4):
