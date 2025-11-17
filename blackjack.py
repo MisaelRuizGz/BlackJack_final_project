@@ -6,26 +6,33 @@ class BlackJackGame:
     @staticmethod
     def rules():
         print("""
-        Blackjack Rules
-            Goal: Get as close to 21 as possible without going over.
+    Objective:
+        Get your hand as close to 21 as possible without going over.
 
-            Card Values:
-                - Number cards = face value
-                - J , Q , K = 10 points
-                - Ace (A) = 1 or 11 points (whichever benefits the player)
+    Card Values:
+        - Number cards (2–10): Face value
+        - J, Q, K: 10 points each
+        - Ace (A): Counts as 1 or 11, whichever is better for the hand
 
-            Dealer Rules:
-                The dealer must hit until their hand totals 17 or higher.
-            Bust:
-                If your total goes over 21, you bust and automatically lose.
-            Push:
-                If you and the dealer have the same total, it is a push (tie).
-              Betting:
-                You may bet up to a maximum of 200 chips per round.
-        """)
+    Dealer Rules:
+        - The dealer must hit until their total is 17 or higher.
+
+    Bust:
+        - If your total goes over 21, you bust and automatically lose.
+
+    Push (Tie):
+        - If you and the dealer have the same total, it's a push (tie).
+
+    Betting:
+        - You may bet up to 500 chips per round.
+        - Winning pays 3:2 (Example: bet 100 → win 150).
+    """
+)
 
 
     def game(self, user_name):
+    
+
 
         return
 
@@ -62,12 +69,6 @@ class Deck:
             temp_card_hold = (card + suit)
             mixed_deck.append(temp_card_hold) 
 
-
-
-
-            
-
-
     ''' 
     This is for testing to make sure i have all 52 cards 
     
@@ -89,8 +90,8 @@ class Betting():
 
 def main():
     prompt = f'''\nWelcome to Misael's online casino, would you like to play BlackJack ?\n''' \
-    '1. Yes, I want to play\n' \
-    '2. No\n'\
+    '1. Yes\n' \
+    '2. No \n'\
     'Please enter 1 or 2 (or hit enter to end): '
 
     done:bool = False
@@ -102,8 +103,9 @@ def main():
                 done =True
             case '1':
                 user_name = input('\nOkay lets get started that, what is your name: ')
-                print(f"\nOkay {user_name} the rules of BlackJack are simple")
+                print(f"*\n*\n*\n*\nOkay {user_name}, The rules of BlackJack are simple")
                 BlackJackGame.rules()
+                BlackJackGame.game(user_name)
                 done =True
 
                 
