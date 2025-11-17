@@ -79,9 +79,6 @@ class Betting():
         return 
 
 
-
-
-
 def main():
     prompt = f'''\nWelcome to Misael's online casino, would you like to play BlackJack ?\n''' \
     '1. Yes, I want to play\n' \
