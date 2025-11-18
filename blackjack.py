@@ -1,6 +1,5 @@
 
 
-
 class BlackJackGame:
 
     @staticmethod
@@ -31,27 +30,22 @@ class BlackJackGame:
 
 
     def game(self, user_name):
+        
+
     
 
 
         return
 
 
-class Cards:
-    # 2-10 are worth their face value 
-    # J , Q , K are worth 10 Aces can be 1 or 11, depending on which benefits the player
+class Player(Deck):
 
-    def __init__ (self,name):
-        
-        self.name = name
-class Player:
+    def __init__(self,deck , hand , balance ):
+        super().__init__()
+        self.deck = deck.mixed_deck
 
 
 
-
-
-    def __init__ (self,name):
-        self.name = name
 
 
 class Deck:
@@ -72,7 +66,9 @@ class Deck:
 
     '''
     This is for testing to make sure i have all 52 cards 
-    
+    '''
+
+    '''
     for i in range(0, len(mixed_deck), 4):
         print(*mixed_deck[i:i+4])
 
@@ -80,10 +76,13 @@ class Deck:
 
     '''
 
-class Betting():
+class Betting:
 
-    def chips():
+    def chips(self):
         return 
+
+
+
 
 
 def main():
@@ -103,7 +102,8 @@ def main():
                 user_name = input('\nOkay lets get started that, what is your name: ')
                 print(f"*\n*\n*\n*\nOkay {user_name}, The rules of BlackJack are simple")
                 BlackJackGame.rules()
-                BlackJackGame.game(user_name)
+                BlackJackGame().game(user_name)
+
                 done =True
 
                 
