@@ -40,11 +40,9 @@ class BlackJackGame:
 
 class Player(Deck):
 
-    def __init__(self,deck , hand , balance ):
+    def __init__(self, deck, hand, balance):
         super().__init__()
-        self.deck = deck.mixed_deck
-
-
+        self.deck = Deck.mixed_deck
 
 
 
