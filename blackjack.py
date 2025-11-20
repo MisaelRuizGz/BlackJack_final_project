@@ -55,7 +55,7 @@ class Deck:
     #  creates a place for the mixed cards to go after sorting
     mixed_deck = []
 
-    #  sorts the cards into 
+    #  sorts the cards into deck
     for card in cards:
         for suit in suits:
             temp_card_hold = (card + suit)
