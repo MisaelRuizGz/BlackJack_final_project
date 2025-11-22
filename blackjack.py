@@ -1,4 +1,4 @@
-
+import random 
 
 class BlackJackGame:
 
@@ -31,6 +31,7 @@ class BlackJackGame:
 
     def game(self, user_name):
         def player_turn():
+            player_hand = random.choice(Deck.mixed_deck)
             
         
 
