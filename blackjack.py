@@ -30,6 +30,8 @@ class BlackJackGame:
 
 
     def game(self, user_name):
+        def player_turn():
+            
         
 
     
