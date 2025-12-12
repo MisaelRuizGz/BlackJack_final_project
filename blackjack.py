@@ -108,7 +108,7 @@ class BlackJackGame:
         print(f"Dealer hand: [Hidden] {self.dealer.hand[1]}")
         print("Value: ?\n")
         
-        # handles dealer blackjack and player blackjack
+        # handles blackjack
         if dealer_blackjack:
             print(f"Dealer reveals: {' '.join(self.dealer.hand)}")
             print(f"Dealer Value: {dealer_val}\n")
@@ -210,8 +210,8 @@ class BlackJackGame:
         # Determine winner
         self.determine_winner(dealer_val)
 
+    # Main game loop
     def game(self):
-        # Main game loop
         print(f"Welcome {self.user_name}! You start with {self.player.balance} chips.")
         
         while True:
@@ -227,13 +227,11 @@ class BlackJackGame:
         
         print(f"Final balance: {self.player.balance}\n")
 
-# player class to manage player state
+# player class to manage player 
 class Player:
     def __init__(self, balance=1000):
         self.balance = balance
         self.hand = []
-
-# deck class to manage the deck of cards
 class Deck:
     cards = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
     suits = ['♠︎' , '♥︎' , '♦︎' , '♣︎']
