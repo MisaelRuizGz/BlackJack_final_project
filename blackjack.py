@@ -2,6 +2,7 @@ import random
 
 class BlackJackGame:
 
+    # Display rules
     @staticmethod
     def rules():
         print("""
@@ -28,63 +29,151 @@ class BlackJackGame:
     """
 )
 
+    # Calculates the hand value
+    @staticmethod
+    def calculate_value(hand):
+        value = sum(BlackJackGame.get_value(card) for card in hand)
+        aces = sum(1 for card in hand if card.startswith('A '))
+        while value > 21 and aces:
+            value -= 10
+            aces -= 1
+        return value
 
+    # Gets card value, helper for calculate_value
+    @staticmethod
+    def get_value(card):
+        rank = card.split()[0]
+        if rank in ['J', 'Q', 'K']:
+            return 10
+        elif rank == 'A':
+            return 11
+        else:
+            return int(rank)
+
+    # Displays hand
+    @staticmethod
+    def display_hand(hand, name="Player", hide_first=False):
+        if hide_first:
+            print(f"{name}: [Hidden] " + " ".join(hand[1:]))
+        else:
+            print(f"{name}: " + " ".join(hand))
+
+    # Main game loop, handles betting, dealing, player and dealer turns
     def game(self, user_name):
-        def player_turn():
-            player_hand = random.choice(Deck.mixed_deck)
+        player = Player()
+        print(f"Welcome {user_name}! You start with {player.balance} chips.")
+        while True:
+            if player.balance < 1:
+                print("You're out of chips!")
+                break
+            deck = Deck()
+            player.hand = []
+            dealer = Player()  
+            dealer.hand = []
+           
+           # Place bet
+            while True:
+                try:
+                    bet = int(input(f"Your balance: {player.balance}. Enter bet (1-{min(500, player.balance)}): "))
+                    if 1 <= bet <= min(500, player.balance):
+                        break
+                    else:
+                        print("Invalid bet.")
+                except ValueError:
+                    print("Enter a number.")
+
+            # Initial deal
+            player.hand.append(deck.deal())
+            dealer.hand.append(deck.deal())
+            player.hand.append(deck.deal())
+            dealer.hand.append(deck.deal())
+           
+           # Show initial hands
+            print(f"\nYour hand: {' '.join(player.hand)}")
+            print(f"Value: {BlackJackGame.calculate_value(player.hand)}\n")
+
+            print(f"Dealer hand: {' '.join(dealer.hand)}")
+            print(f"Value: {BlackJackGame.calculate_value(dealer.hand)}\n")
+
+            # Player's turn
+            while BlackJackGame.calculate_value(player.hand) < 21:
+                choice = input("Hit (h) or Stand (s)? ").lower()
+                if choice == 'h':
+                    player.hand.append(deck.deal())
+                    print(f"\nYour hand: {' '.join(player.hand)}")
+                    print(f"Value: {BlackJackGame.calculate_value(player.hand)}\n")
+                    if BlackJackGame.calculate_value(player.hand) > 21:
+                        print("Bust! You lose.")
+                        player.balance -= bet
+                        break
+                elif choice == 's':
+                    break
+                else:
+                    print("Invalid choice.")
+            else:
             
-        
+                if len(player.hand) == 2 and BlackJackGame.calculate_value(player.hand) == 21:
+                    print("Blackjack! You win 3:2!")
+                    player.balance += int(bet * 1.5)
+                    continue
 
-    
+                # Dealer's turn, only if player hasn't busted
+            if BlackJackGame.calculate_value(player.hand) > 21:
+                pass  
+            else:
+                
+                print(f"\nDealer hand: {' '.join(dealer.hand)}")
+                print(f"Value: {BlackJackGame.calculate_value(dealer.hand)}\n")
+                while BlackJackGame.calculate_value(dealer.hand) < 17:
+                    dealer.hand.append(deck.deal())
+                    print("Dealer hits")
+                    print(f"Dealer hand: {' '.join(dealer.hand)}")
+                    print(f"Value: {BlackJackGame.calculate_value(dealer.hand)}\n")
+                dealer_val = BlackJackGame.calculate_value(dealer.hand)
+                if dealer_val > 21:
+                    print("Dealer busts! You win!")
+                    player.balance += int(bet * 1.5)
+                else:
+                    player_val = BlackJackGame.calculate_value(player.hand)
+                    if player_val > dealer_val:
+                        print("You win!")
+                        player.balance += int(bet * 1.5)
+                    elif player_val < dealer_val:
+                        print("Dealer wins!")
+                        player.balance -= bet
+                    else:
+                        print("Push!")
+           
+            again = input("Play again? (y/n): ").lower()
+            if again != 'y':
+                break
+        print(f"Final balance: {player.balance}\n")
 
 
-        return
+class Player:
 
-
-class Player(Deck):
-
-    def __init__(self, deck, hand, balance):
-        super().__init__()
-        self.deck = Deck.mixed_deck
+    def __init__(self, balance=1000):
+        self.balance = balance
+        self.hand = []
 
 
 
 class Deck:
 
     #  Cards and their suits, need to figure out how to combine and only have one of each'''
-    cards = ['2 ','3 ','4 ','5 ','6 ','7 ','8 ','9 ','10 ','J ','Q ','K ','A ']
+    cards = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
     suits = ['♠︎' , '♥︎' , '♦︎' , '♣︎']
 
-    #  creates a place for the mixed cards to go after sorting
-    mixed_deck = []
+    def __init__(self):
+        self.mixed_deck = []
+        for _ in range(6):
+            self.mixed_deck.extend([card + ' ' + suit for card in self.cards for suit in self.suits])
+        random.shuffle(self.mixed_deck)
 
-    #  sorts the cards into deck
-    for card in cards:
-        for suit in suits:
-            temp_card_hold = (card + suit)
-            mixed_deck.append(temp_card_hold)
-            
+    def deal(self):
+        return self.mixed_deck.pop()
 
-    '''
-    This is for testing to make sure i have all 52 cards 
-    '''
-
-    '''
-    for i in range(0, len(mixed_deck), 4):
-        print(*mixed_deck[i:i+4])
-
-    print(len(mixed_deck))
-
-    '''
-
-class Betting:
-
-    def chips(self):
-        return 
-
-
-
-
+ 
 
 def main():
     prompt = f'''\nWelcome to Misael's online casino, would you like to play BlackJack ?\n''' \
